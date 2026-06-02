@@ -1,0 +1,5 @@
+# robots.txt for rkglobalsolution.com
+User-agent: *
+Disallow:
+
+Sitemap: http://rkglobalsolution.com/sitemap.xml
