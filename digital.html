@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>RK Global Solution | Digital Marketing & Graphic Design</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #0a2540;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --primary-blue: #0a66c2;
+      --deep-blue: #004182;
+      --soft-blue: #eef5ff;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+      --gray-border: #e2e8f0;
+      --accent-orange: #f97316;
+      --accent-purple: #8b5cf6;
+      --gradient-marketing: linear-gradient(135deg, #0a66c2 0%, #8b5cf6 100%);
+    }
+
+    /* animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 0 0 rgba(10,102,194,0.3); }
+      70% { box-shadow: 0 0 0 15px rgba(10,102,194,0); }
+      100% { box-shadow: 0 0 0 0 rgba(10,102,194,0); }
+    }
+    @keyframes slideInUp {
+      from { opacity: 0; transform: translateY(40px);}
+      to { opacity: 1; transform: translateY(0);}
+    }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+
+    
+
+     /* Navbar */
+    nav {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(2px);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo p {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--deep-blue);
+    }
+
+    .logo1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color:#003B71;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap:0.5rem;
+    }
+
+    #site-logo {
+      width: 80px;
+      height: 70px;
+    }
+
+    /* drop-down menu */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 1rem;
+      display: inline-block;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 2.5rem;
+      left: -1.2rem;
+      background: var(--white);
+      min-width: 250px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      border-radius: 1rem;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.25s ease;
+      border: 1px solid var(--gray-border);
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5px);
+    }
+
+    .dropdown-menu li {
+      padding: 0.5rem 1.5rem;
+      list-style: none;
+    }
+
+    .dropdown-menu li a {
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1e293b;
+    }
+
+    .dropdown-menu li a i {
+      width: 22px;
+      color: var(--primary-blue);
+    }
+
+    .dropdown-menu li a:hover {
+      color: var(--primary-blue);
+      transform: translateX(4px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--primary-blue);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      background: transparent;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: white !important;
+    }
+
+    /* Hero Section */
+    .hero-image-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .hero-banner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .hero-banner-text { flex: 1; text-align: left; }
+    .hero-banner-text h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--deep-blue), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-banner-img { flex: 1; display: flex; gap: 1rem; justify-content: center; }
+    .hero-banner-img img { width: 45%; max-width: 200px; border-radius: 1.5rem; box-shadow: 0 20px 30px -8px rgba(0,0,0,0.15); transition: transform 0.3s; }
+    @media (max-width: 768px) { .hero-banner-text { text-align: center; } .hero-banner-text h1 { font-size: 2rem; } }
+
+    /* ========== DIGITAL MARKETING & GRAPHIC DESIGN PAGE (COMPLETELY NEW UI) ========== */
+    .marketing-master {
+      background: linear-gradient(145deg, #ffffff 0%, #faf5ff 100%);
+      border-radius: 2.5rem;
+      margin: 2rem auto;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .marketing-hero {
+      text-align: center;
+      padding: 1rem 1rem 2rem;
+    }
+    .marketing-hero h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-marketing);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .marketing-hero p {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.05rem;
+      color: #2c3e66;
+    }
+    .marketing-badge {
+      background: linear-gradient(120deg, #0a66c2, #8b5cf6);
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+    /* 3 column grid for marketing services */
+    .marketing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    .marketing-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .marketing-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--accent-purple);
+      box-shadow: 0 25px 40px -12px rgba(139, 92, 246, 0.25);
+    }
+    .marketing-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--deep-blue);
+    }
+    .marketing-list {
+      list-style: none;
+    }
+    .marketing-list li {
+      margin-bottom: 0.85rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 0.95rem;
+    }
+    .marketing-list li i {
+      width: 28px;
+      color: var(--accent-purple);
+      font-size: 1.1rem;
+    }
+    .seo-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 1rem;
+    }
+    .seo-tag {
+      background: linear-gradient(120deg, #eef5ff, #f3e8ff);
+      padding: 0.4rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .seo-tag:hover {
+      background: var(--accent-purple);
+      color: white;
+      transform: scale(1.03);
+    }
+    /* Graphic Design specific section */
+    .graphic-showcase {
+      background: linear-gradient(145deg, #fefce8 0%, #ffffff 100%);
+      border-radius: 2rem;
+      margin: 2rem 0;
+      padding: 2rem;
+      border: 1px solid #ffe6b3;
+    }
+    .graphic-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+      margin-top: 1.5rem;
+    }
+    .graphic-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      transition: 0.3s;
+      border: 1px solid #fde68a;
+    }
+    .graphic-card:hover { transform: translateY(-8px); border-color: var(--accent-orange); }
+    .graphic-card i { font-size: 2.5rem; color: var(--accent-orange); margin-bottom: 1rem; }
+    .stat-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      background: linear-gradient(105deg, #f3e8ff, #eef5ff);
+      border-radius: 2rem;
+      padding: 1.5rem;
+    }
+    .stat-block-marketing { text-align: center; flex: 1; }
+    .stat-number { font-size: 2rem; font-weight: 800; color: var(--accent-purple); }
+
+    /* Other sections */
+    .section { padding: 5rem 2rem; max-width: 1300px; margin: 0 auto; }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--deep-blue);
+      margin-bottom: 2rem;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-blue), var(--accent-purple));
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem; }
+    .service-card { background: white; border-radius: 1.5rem; padding: 1.5rem; text-align: center; border: 1px solid var(--gray-border); transition: 0.3s; }
+    .service-card i { font-size: 2.2rem; color: var(--primary-blue); }
+    .industries-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 1.2rem; }
+    .industry-card { background: white; border: 1px solid var(--gray-border); padding: 0.8rem; text-align: center; border-radius: 2rem; }
+    .cta-section { background: var(--gradient-marketing); color: white; text-align: center; border-radius: 2.5rem; padding: 3rem 2rem; }
+    .btn-white { background: white; color: var(--accent-purple); padding: 0.8rem 2rem; border-radius: 60px; font-weight: 700; display: inline-block; }
+
+    /* Footer */
+    .rk-footer {
+      background: #0a192f;
+      color: #eef2ff;
+      margin-top: 3rem;
+      border-top: 5px solid var(--accent-purple);
+    }
+    .footer-container { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+    .company-description { color: #cbd5e6; line-height: 1.6; }
+    .services-list { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
+    .service-tag { background: rgba(255,255,255,0.06); padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.8rem; }
+    .info-details { background: rgba(139, 92, 246, 0.1); border-radius: 1.5rem; padding: 1rem; border-left: 4px solid var(--accent-purple); }
+    .info-item { display: flex; gap: 12px; margin-bottom: 0.8rem; align-items: center; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .social-links a { color: #cbd5e6; margin-left: 1rem; font-size: 1.1rem; transition: 0.2s; }
+    .social-links a:hover { color: var(--accent-purple); }
+
+    @media (max-width: 920px) {
+      .nav-container { flex-direction: column; gap: 1rem; }
+      .dropdown-menu { position: static; display: none; }
+      .dropdown:hover .dropdown-menu { display: block; }
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo1">
+      <img src="logo5.png" alt="your company logo" id="site-logo">RK GLOBAL SOLUTION
+      </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#services">Services <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="uiux.html"><i class="fas fa-laptop-code"></i> UI/UX Design</a></li>
+          <li><a href="webdevelopment.html"><i class="fas fa-code"></i> Web Development</a></li>
+          <li><a href="mobileapp.html"><i class="fas fa-mobile-alt"></i> Mobile App Development</a></li>
+          <li><a href="ecommerce.html"><i class="fas fa-store"></i> E-commerce Development</a></li>
+          <li><a href="digital.html"><i class="fas fa-chart-line"></i> Digital Marketing</a></li>
+          <li><a href="graphic.html"><i class="fas fa-palette"></i> Graphic Design</a></li>
+          <li><a href="soft.html"><i class="fas fa-cogs"></i> Software Development</a></li>
+          <li><a href="maintain.html"><i class="fas fa-sync-alt"></i> Website Maintenance</a></li>
+        </ul>
+      </li>
+      <li><a href="#industries">About Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="btn-outline">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section id="home" class="hero-image-section">
+  <div class="hero-banner">
+    <div class="hero-banner-text" data-aos="fade-right">
+      <h1>Grow Your Brand with Digital Excellence</h1>
+      <p style="font-size: 1.1rem;">RK Global Solution provides result-oriented digital marketing & creative graphic design services that boost visibility, leads, and sales.</p>
+      <a href="#marketing-page" style="background: linear-gradient(135deg, #0a66c2, #8b5cf6); color:white; padding:0.8rem 2rem; border-radius:40px; text-decoration:none; display:inline-block;">Explore Marketing</a>
+    </div>
+    <div class="hero-banner-img" data-aos="fade-left">
+      <img src="https://placehold.co/400x350/0a66c2/white?text=SEO+Social+Media" alt="Marketing">
+      <img src="https://placehold.co/400x350/8b5cf6/white?text=Graphic+Design" alt="Graphic Design">
+    </div>
+  </div>
+</section>
+
+<!-- ========== DIGITAL MARKETING SERVICES PAGE (NEW UI) ========== -->
+<section id="marketing-page" class="section marketing-master" data-aos="fade-up">
+  <div class="marketing-hero">
+    <span class="marketing-badge"><i class="fas fa-chart-line"></i> Data-Driven Results</span>
+    <h2>Digital Marketing Services</h2>
+    <p>RK Global Solution provides result-oriented digital marketing services that help businesses improve online visibility, generate leads, and increase sales. Our marketing strategies are customized according to business goals and target audiences.</p>
+  </div>
+
+  <div class="marketing-grid">
+    <!-- Our Digital Marketing Services -->
+    <div class="marketing-card" data-aos="fade-up" data-aos-delay="100">
+      <h3><i class="fas fa-bullhorn"></i> Our Digital Marketing Services</h3>
+      <ul class="marketing-list">
+        <li><i class="fab fa-google"></i> Search Engine Optimization (SEO)</li>
+        <li><i class="fab fa-google"></i> Google Ads Management</li>
+        <li><i class="fab fa-facebook"></i> Social Media Marketing</li>
+        <li><i class="fab fa-facebook-messenger"></i> Facebook Ads</li>
+        <li><i class="fab fa-instagram"></i> Instagram Marketing</li>
+        <li><i class="fab fa-youtube"></i> YouTube Marketing</li>
+        <li><i class="fas fa-pen-fancy"></i> Content Marketing</li>
+        <li><i class="fas fa-envelope"></i> Email Marketing</li>
+        <li><i class="fas fa-map-marker-alt"></i> Local SEO Services</li>
+        <li><i class="fab fa-google"></i> Google My Business Optimization</li>
+      </ul>
+    </div>
+
+    <!-- Benefits of Digital Marketing -->
+    <div class="marketing-card" data-aos="fade-up" data-aos-delay="200">
+      <h3><i class="fas fa-rocket"></i> Benefits of Digital Marketing</h3>
+      <ul class="marketing-list">
+        <li><i class="fas fa-chart-line"></i> Increase Website Traffic</li>
+        <li><i class="fas fa-users"></i> Generate Quality Leads</li>
+        <li><i class="fas fa-globe"></i> Improve Brand Awareness</li>
+        <li><i class="fas fa-shopping-cart"></i> Increase Online Sales</li>
+        <li><i class="fas fa-bullseye"></i> Reach Target Audience</li>
+        <li><i class="fas fa-chart-simple"></i> Improve Business Growth</li>
+      </ul>
+      <div class="stat-row" style="margin-top: 1.5rem;">
+        <div class="stat-block-marketing"><div class="stat-number">300%</div><div>Avg ROI Growth</div></div>
+        <div class="stat-block-marketing"><div class="stat-number">10k+</div><div>Leads Generated</div></div>
+      </div>
+    </div>
+
+    <!-- SEO Services Include -->
+    <div class="marketing-card" data-aos="fade-up" data-aos-delay="300">
+      <h3><i class="fas fa-search"></i> SEO Services Include</h3>
+      <div class="seo-tags">
+        <span class="seo-tag">Keyword Research</span>
+        <span class="seo-tag">On-Page SEO</span>
+        <span class="seo-tag">Off-Page SEO</span>
+        <span class="seo-tag">Technical SEO</span>
+        <span class="seo-tag">Local SEO</span>
+        <span class="seo-tag">Content Optimization</span>
+        <span class="seo-tag">Search Console Management</span>
+        <span class="seo-tag">Performance Tracking</span>
+      </div>
+      <div style="margin-top: 1.2rem;">
+        <img src="https://placehold.co/400x120/ffffff/8b5cf6?text=SEO+Analytics+%7C+Rank+Tracking" style="width:100%; border-radius: 1rem;" alt="SEO Dashboard">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== GRAPHIC DESIGN SERVICES SECTION (NEW) ========== -->
+<section id="graphic-page" class="section graphic-showcase" data-aos="fade-up">
+  <div style="text-align: center;">
+    <span class="marketing-badge" style="background: linear-gradient(120deg, #f97316, #8b5cf6);"><i class="fas fa-palette"></i> Creative Studio</span>
+    <h2 style="font-size: 2.2rem; color: var(--deep-blue); margin-top: 0.5rem;">Graphic Design Services</h2>
+    <p style="max-width: 700px; margin: 1rem auto;">Creative, modern, and engaging graphic design solutions that elevate your brand identity. We craft visuals that speak volumes and drive engagement across all platforms.</p>
+  </div>
+  <div class="graphic-grid">
+    <div class="graphic-card"><i class="fas fa-brush"></i><h3>Logo & Brand Identity</h3><p>Unique logos, brand guidelines, and visual identity systems.</p></div>
+    <div class="graphic-card"><i class="fas fa-image"></i><h3>Social Media Graphics</h3><p>Instagram, Facebook, LinkedIn posts & carousels that convert.</p></div>
+    <div class="graphic-card"><i class="fas fa-video"></i><h3>Motion Graphics</h3><p>Animated explainers, GIFs, and video intros.</p></div>
+    <div class="graphic-card"><i class="fas fa-print"></i><h3>Print & Packaging</h3><p>Brochures, flyers, business cards, product packaging.</p></div>
+    <div class="graphic-card"><i class="fas fa-chart-simple"></i><h3>Infographics</h3><p>Data visualization & engaging infographic designs.</p></div>
+    <div class="graphic-card"><i class="fas fa-mobile-alt"></i><h3>UI/UX Graphics</h3><p>App icons, web illustrations, custom UI elements.</p></div>
+  </div>
+</section>
+
+<!-- Other Services (condensed) -->
+<div id="services" class="section">
+  <div class="section-title">Our Complete IT Services</div>
+  <div class="services-grid" data-aos="zoom-in-up">
+    <div class="service-card"><i class="fas fa-chart-line"></i><h3>Digital Marketing</h3></div>
+    <div class="service-card"><i class="fas fa-palette"></i><h3>Graphic Design</h3></div>
+    <div class="service-card"><i class="fas fa-code"></i><h3>Web Development</h3></div>
+    <div class="service-card"><i class="fas fa-mobile-alt"></i><h3>Mobile App</h3></div>
+    <div class="service-card"><i class="fas fa-shopping-cart"></i><h3>E-Commerce</h3></div>
+    <div class="service-card"><i class="fas fa-cogs"></i><h3>Software Dev</h3></div>
+  </div>
+</div>
+
+<!-- About & Industries -->
+<section id="about" class="section">
+  <div class="section-title">Who We Are</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+    <div style="flex:1"><p style="font-size:1.05rem">RK Global Solution is a trusted IT & digital marketing company in Coimbatore. We deliver result-oriented marketing campaigns, creative graphic design, web & mobile solutions. Our data-driven approach ensures maximum ROI for our clients.</p></div>
+    <div style="flex:1"><img src="https://placehold.co/500x350/8b5cf6/white?text=Digital+Marketing+Team" style="width:100%; border-radius: 2rem;" alt="team"></div>
+  </div>
+</section>
+
+<section id="industries" class="section">
+  <div class="section-title">About Us</div>
+  <p>RK Global Solution is a growing IT solutions company focused on delivering
+     innovative digital services for businesses worldwide. We specialize in website 
+     development, mobile app development, branding, UI/UX design, software solutions, 
+     and digital marketing services.</p>
+
+    <p>ur team combines creativity, technology, and strategy to create 
+    customized digital experiences that help businesses achieve long-term success.
+     We are committed to quality, innovation, transparency, and customer satisfaction.</p>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="section">
+  <div class="cta-section" data-aos="flip-up">
+    <h2>Ready to Skyrocket Your Business?</h2>
+    <p>Get a free digital marketing audit or graphic design quote today.</p>
+    <a href="#" class="btn-white">Request Free Consultation →</a>
+  </div>
+</section>
+
+<!-- FOOTER (elaborated) -->
+<footer class="rk-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>RK Global Solution</h3>
+        <p class="company-description">RK Global Solution is a trusted IT company in Coimbatore delivering web design, web development, mobile app development, UI/UX design, e-commerce development, digital marketing, and graphic design services.<br><br><strong style="color:white;">Contact us today to transform your business digitally.</strong></p>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom: 1rem;">📢 Digital Services</h4>
+        <div class="services-list">
+          <span class="service-tag">SEO Optimization</span><span class="service-tag">Google Ads</span>
+          <span class="service-tag">Social Media</span><span class="service-tag">Graphic Design</span>
+          <span class="service-tag">Email Marketing</span><span class="service-tag">Content Marketing</span>
+          <span class="service-tag">Brand Identity</span><span class="service-tag">Motion Graphics</span>
+        </div>
+      </div>
+      <div class="footer-info">
+        <h4 style="color:white;">📍 Contact Information</h4>
+        <div class="info-details">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i> Coimbatore, Tamil Nadu, India (UK Collaboration)</div>
+          <div class="info-item"><i class="fas fa-phone-alt"></i> +91 XXXXXXXXXX</div>
+          <div class="info-item"><i class="fas fa-envelope"></i> info@rkglobalsolution.com</div>
+          <div class="info-item"><i class="fas fa-globe"></i> www.rkglobalsolution.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">© 2026 RK Global Solution — Digital Growth Partners. All rights reserved.</div>
+      <div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook-f"></i></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href==="") return;
+      const target = document.querySelector(href);
+      if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  if(window.innerWidth <= 920) {
+    document.querySelectorAll('.dropdown').forEach(drop => {
+      const link = drop.querySelector('a');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const menu = drop.querySelector('.dropdown-menu');
+        if(menu.style.display === 'block') menu.style.display = 'none';
+        else menu.style.display = 'block';
+      });
+    });
+  }
+</script>
+</body>
+</html>

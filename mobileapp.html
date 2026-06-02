@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>RK Global Solution | IT, Web & Mobile App Development</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #0a2540;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --primary-blue: #0a66c2;
+      --deep-blue: #004182;
+      --soft-blue: #eef5ff;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+      --gray-border: #e2e8f0;
+    }
+
+    /* animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 0 0 rgba(10,102,194,0.2); }
+      70% { box-shadow: 0 0 0 12px rgba(10,102,194,0); }
+      100% { box-shadow: 0 0 0 0 rgba(10,102,194,0); }
+    }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+
+   
+ /* Navbar */
+    nav {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(2px);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo p {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--deep-blue);
+    }
+
+    .logo1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color:#003B71;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap:0.5rem;
+    }
+
+    #site-logo {
+      width: 80px;
+      height: 70px;
+    }
+
+    /* drop-down menu */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 1rem;
+      display: inline-block;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 2.5rem;
+      left: -1.2rem;
+      background: var(--white);
+      min-width: 250px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      border-radius: 1rem;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.25s ease;
+      border: 1px solid var(--gray-border);
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5px);
+    }
+
+    .dropdown-menu li {
+      padding: 0.5rem 1.5rem;
+      list-style: none;
+    }
+
+    .dropdown-menu li a {
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1e293b;
+    }
+
+    .dropdown-menu li a i {
+      width: 22px;
+      color: var(--primary-blue);
+    }
+
+    .dropdown-menu li a:hover {
+      color: var(--primary-blue);
+      transform: translateX(4px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--primary-blue);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      background: transparent;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: white !important;
+    }
+
+
+    /* Hero Section with multiple images */
+    .hero-image-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .hero-banner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .hero-banner-text { flex: 1; text-align: left; }
+    .hero-banner-text h1 { font-size: 3rem; font-weight: 800; color: var(--deep-blue); }
+    .hero-banner-img { flex: 1; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .hero-banner-img img {
+      width: 45%;
+      max-width: 200px;
+      border-radius: 1.5rem;
+      box-shadow: 0 20px 30px -8px rgba(0,0,0,0.15);
+      transition: transform 0.3s;
+    }
+    .hero-banner-img img:hover { transform: scale(1.03); }
+    @media (max-width: 768px) {
+      .hero-banner-text { text-align: center; }
+      .hero-banner-text h1 { font-size: 2.2rem; }
+    }
+
+    .section { padding: 5rem 2rem; max-width: 1300px; margin: 0 auto; }
+    .section-title {
+      font-size: 2.3rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--deep-blue);
+      margin-bottom: 2.5rem;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 70px;
+      height: 3px;
+      background: var(--primary-blue);
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+
+    /* Mobile App Development Page Section */
+    .mobdev-showcase {
+      background: linear-gradient(145deg, #ffffff 0%, #f5faff 100%);
+      border-radius: 2rem;
+      margin: 2rem auto;
+      padding: 1.5rem;
+    }
+    .mobdev-hero { text-align: center; padding: 1rem; }
+    .mobdev-hero h2 { font-size: 2.2rem; color: var(--deep-blue); }
+    .mobdev-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .mobdev-card {
+      background: white;
+      border-radius: 1.8rem;
+      padding: 1.8rem;
+      transition: all 0.4s;
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.02);
+    }
+    .mobdev-card:hover {
+      transform: translateY(-10px);
+      border-color: var(--primary-blue);
+      box-shadow: 0 20px 30px -12px rgba(10,102,194,0.15);
+    }
+    .mobdev-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--deep-blue);
+    }
+    .features-list, .app-list {
+      list-style: none;
+    }
+    .features-list li, .app-list li {
+      margin-bottom: 0.7rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .industry-badge {
+      display: inline-block;
+      background: var(--soft-blue);
+      padding: 0.3rem 1rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      margin: 0.2rem;
+      font-weight: 500;
+    }
+
+    /* Other existing sections */
+    .about-grid { display: flex; flex-wrap: wrap; gap: 3rem; align-items: center; }
+    .about-text { flex: 1.2; }
+    .about-image img { width: 100%; max-width: 400px; border-radius: 2rem; box-shadow: 0 20px 30px rgba(0,0,0,0.1); }
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 2rem;
+    }
+    .team-card {
+      background: white;
+      border-radius: 2rem;
+      overflow: hidden;
+      text-align: center;
+      padding-bottom: 1.5rem;
+      border: 1px solid var(--gray-border);
+      transition: 0.3s;
+    }
+    .team-card:hover { transform: translateY(-8px); border-color: var(--primary-blue); }
+    .team-img { width: 100%; height: 260px; object-fit: cover; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.8rem;
+    }
+    .service-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.5rem;
+      text-align: center;
+      border: 1px solid #eef2ff;
+      transition: 0.3s;
+    }
+    .service-card i { font-size: 2.4rem; color: var(--primary-blue); margin-bottom: 1rem; }
+    .industries-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1.5rem;
+    }
+    .industry-card {
+      background: white;
+      border: 1px solid var(--gray-border);
+      padding: 1rem;
+      text-align: center;
+      border-radius: 2rem;
+      transition: 0.3s;
+    }
+    .process-steps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .step {
+      background: white;
+      border-radius: 2rem;
+      padding: 1.5rem;
+      flex: 1;
+      min-width: 180px;
+      text-align: center;
+      border: 1px solid var(--gray-border);
+    }
+    .step-number {
+      background: var(--primary-blue);
+      width: 48px;
+      height: 48px;
+      border-radius: 60px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: 800;
+      margin-bottom: 1rem;
+    }
+    .cta-section {
+      background: linear-gradient(105deg, var(--deep-blue) 0%, #0a66c2 100%);
+      color: white;
+      text-align: center;
+      border-radius: 2.5rem;
+      padding: 3rem 2rem;
+    }
+    .btn-white {
+      background: white;
+      color: var(--primary-blue);
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      display: inline-block;
+    }
+    .rk-footer {
+      background: #0a192f;
+      color: #eef2ff;
+      margin-top: 3rem;
+      border-top: 4px solid #0a66c2;
+    }
+    .footer-container { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; }
+    .company-description { color: #cbd5e6; line-height: 1.6; }
+    .services-list { display: flex; flex-wrap: wrap; gap: 0.8rem; }
+    .service-tag { background: rgba(255,255,255,0.05); padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.8rem; }
+    .info-details { background: rgba(10,102,194,0.08); border-radius: 20px; padding: 1rem; border-left: 3px solid #0a66c2; }
+    .info-item { display: flex; gap: 12px; margin-bottom: 0.8rem; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; }
+    @media (max-width: 920px) {
+      .nav-container { flex-direction: column; gap: 1rem; }
+      .dropdown-menu { position: static; display: none; }
+      .dropdown:hover .dropdown-menu { display: block; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo1">
+      <img src="logo5.png" alt="Rk Global Solution" id="site-logo"> RK GLOBAL SOLUTIONS
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#services">Services <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="uiux.html"><i class="fas fa-laptop-code"></i> UI/UX Design</a></li>
+          <li><a href="webdevelopment.html"><i class="fas fa-code"></i> Web Development</a></li>
+          <li><a href="mobileapp.html"><i class="fas fa-mobile-alt"></i> Mobile App Development</a></li>
+          <li><a href="ecommerce.html"><i class="fas fa-store"></i> E-commerce Development</a></li>
+          <li><a href="digital.html"><i class="fas fa-chart-line"></i> Digital Marketing</a></li>
+          <li><a href="graphic.html"><i class="fas fa-palette"></i> Graphic Design</a></li>
+          <li><a href="soft.html"><i class="fas fa-cogs"></i> Software Development</a></li>
+          <li><a href="maintain.html"><i class="fas fa-sync-alt"></i> Website Maintenance</a></li>
+        </ul>
+      </li>
+      <li><a href="#industries">About Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="btn-outline">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- HOME SECTION with multiple images (mobile & web related) -->
+<section id="home" class="hero-image-section">
+  <div class="hero-banner">
+    <div class="hero-banner-text" data-aos="fade-right">
+      <h1>Innovate. Build. Scale.</h1>
+      <p style="font-size: 1.1rem; margin: 1rem 0;">RK Global Solution delivers cutting-edge IT coaching, web & mobile app development. Transform your digital presence with our expert team.</p>
+      <a href="#mobdev-page" style="background: var(--primary-blue); color:white; padding:0.7rem 1.8rem; border-radius:40px; text-decoration:none; display:inline-block;">Explore Mobile Apps</a>
+    </div>
+    <div class="hero-banner-img" data-aos="fade-left">
+      <img src="https://placehold.co/400x350/0a66c2/white?text=Android+iOS" alt="Mobile Apps">
+      <img src="https://placehold.co/400x350/004182/white?text=Cross+Platform" alt="Cross Platform">
+    </div>
+  </div>
+</section>
+
+<!-- ========== MOBILE APP DEVELOPMENT SERVICES PAGE SECTION ========== -->
+<section id="mobdev-page" class="section mobdev-showcase" data-aos="fade-up">
+  <div class="mobdev-hero">
+    <span style="background: #eef5ff; padding:0.2rem 1rem; border-radius:30px;"><i class="fas fa-mobile-alt"></i> Android • iOS • Hybrid</span>
+    <h2>Mobile App Development Services</h2>
+    <p style="max-width: 800px; margin: 1rem auto;">RK Global Solution develops innovative mobile applications for Android and iOS platforms. We create user-friendly, secure, and scalable mobile apps that help businesses connect with customers efficiently. Our mobile app solutions are designed for performance, functionality, and excellent user experience.</p>
+  </div>
+  
+  <div class="mobdev-grid">
+    <!-- Services list -->
+    <div class="mobdev-card" data-aos="fade-right">
+      <h3><i class="fas fa-cogs"></i> Our Mobile App Services</h3>
+      <ul class="app-list">
+        <li><i class="fab fa-android" style="color:#0a66c2;"></i> Android App Development</li>
+        <li><i class="fab fa-apple" style="color:#0a66c2;"></i> iOS App Development</li>
+        <li><i class="fas fa-code-branch"></i> Hybrid App Development</li>
+        <li><i class="fas fa-globe"></i> Cross-Platform App Development</li>
+        <li><i class="fas fa-briefcase"></i> Business App Development</li>
+        <li><i class="fas fa-shopping-cart"></i> E-Commerce Mobile Apps</li>
+        <li><i class="fas fa-paint-brush"></i> UI/UX for Mobile Apps</li>
+        <li><i class="fas fa-headset"></i> App Maintenance & Support</li>
+      </ul>
+    </div>
+    <!-- Features of Our Mobile Apps -->
+    <div class="mobdev-card" data-aos="fade-up">
+      <h3><i class="fas fa-star"></i> Features of Our Mobile Apps</h3>
+      <ul class="features-list">
+        <li><i class="fas fa-smile"></i> User-Friendly Interface</li>
+        <li><i class="fas fa-tachometer-alt"></i> Fast Performance</li>
+        <li><i class="fas fa-shield-alt"></i> Secure Architecture</li>
+        <li><i class="fas fa-bell"></i> Push Notifications</li>
+        <li><i class="fas fa-chart-line"></i> Real-Time Features</li>
+        <li><i class="fas fa-credit-card"></i> Payment Gateway Integration</li>
+        <li><i class="fas fa-plug"></i> API Integration</li>
+        <li><i class="fas fa-cloud"></i> Cloud Connectivity</li>
+      </ul>
+    </div>
+    <!-- Industries We Develop Apps For -->
+    <div class="mobdev-card" data-aos="fade-left">
+      <h3><i class="fas fa-industry"></i> Industries We Develop Apps For</h3>
+      <div style="margin-top: 1rem;">
+        <span class="industry-badge"><i class="fas fa-hospital-user"></i> Healthcare</span>
+        <span class="industry-badge"><i class="fas fa-graduation-cap"></i> Education</span>
+        <span class="industry-badge"><i class="fas fa-chart-line"></i> E-Commerce</span>
+        <span class="industry-badge"><i class="fas fa-utensils"></i> Food Delivery</span>
+        <span class="industry-badge"><i class="fas fa-building"></i> Real Estate</span>
+        <span class="industry-badge"><i class="fas fa-plane"></i> Travel</span>
+        <span class="industry-badge"><i class="fas fa-coins"></i> Finance</span>
+        <span class="industry-badge"><i class="fas fa-store"></i> Retail Businesses</span>
+      </div>
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <img src="https://placehold.co/300x120/ffffff/0a66c2?text=Flutter+%7C+React+Native+%7C+Swift" style="width:100%; border-radius: 1rem;" alt="mobile tech">
+      </div>
+    </div>
+  </div>
+  <!-- extra animation badge -->
+  <div style="text-align: center; margin-top: 1rem;">
+    <div class="industry-badge" style="background:#0a66c2; color:white;">End-to-End Mobile Solutions</div>
+    <div class="industry-badge" style="background:#0a66c2; color:white;">App Store & Play Store Deployment</div>
+  </div>
+</section>
+
+<!-- Web Development Page Section (kept) -->
+<section id="webdev-page" class="section mobdev-showcase" data-aos="fade-up">
+  <div class="mobdev-hero"><h2>Custom Web Development Services</h2><p>Secure, scalable & high-performance websites using modern technologies.</p></div>
+  <div class="mobdev-grid">
+    <div class="mobdev-card"><h3><i class="fas fa-cogs"></i> Web Services</h3><ul><li>Custom & Dynamic Websites</li><li>CMS, E-Commerce</li><li>React, Node.js, Laravel</li><li>API Integration</li></ul></div>
+    <div class="mobdev-card"><h3><i class="fas fa-microchip"></i> Tech Stack</h3><div><span class="industry-badge">React</span> <span class="industry-badge">Node.js</span> <span class="industry-badge">PHP/Laravel</span> <span class="industry-badge">MongoDB</span></div></div>
+    <div class="mobdev-card"><h3><i class="fas fa-chart-line"></i> Benefits</h3><ul><li>SEO-Friendly, Fast Performance</li><li>Mobile Compatible</li><li>Future-Ready</li></ul></div>
+  </div>
+</section>
+
+<!-- UI/UX Section -->
+<section id="uiux-page" class="section mobdev-showcase" data-aos="fade-up">
+  <div class="mobdev-hero"><h2>Creative UI/UX Design Services</h2><p>Modern, engaging interfaces that drive conversions.</p></div>
+  <div class="mobdev-grid">
+    <div class="mobdev-card"><h3><i class="fas fa-cube"></i> UI/UX Solutions</h3><ul><li>Website & Mobile App UI/UX</li><li>Wireframe & Prototype</li><li>User Research</li></ul></div>
+    <div class="mobdev-card"><h3><i class="fas fa-chart-line"></i> Why It Matters</h3><ul><li>Customer Satisfaction</li><li>Higher Engagement</li><li>Better Brand Value</li></ul></div>
+  </div>
+</section>
+
+<!-- About Us Section -->
+<section id="about" class="section" data-aos="fade-up">
+  <div class="section-title">Who We Are</div>
+  <div class="about-grid">
+    <div class="about-text"><h3>Innovation-driven IT Hub <i class="fas fa-rocket"></i></h3><p>RK Global Solution is a trusted IT company in Coimbatore, delivering cutting-edge web & mobile development, UI/UX, and software solutions. We empower businesses with future-ready digital products and provide industry-aligned coaching programs. Our team blends creativity with technical excellence.</p><div style="margin-top:1rem"><strong>500+ Projects | 1000+ Students Trained | 50+ Experts</strong></div></div>
+    <div class="about-image"><img src="https://placehold.co/500x400/004182/white?text=Our+Studio+Coimbatore" alt="About RK Global"></div>
+  </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="section" style="background: var(--gray-light); border-radius: 3rem;">
+  <div class="section-title">Meet Our Experts</div>
+  <div class="team-grid" data-aos="fade-up">
+    <div class="team-card"><img src="ph1.jpg" class="team-img"><h3>Arun Kumar</h3><div class="team-role">Lead Mobile Architect</div><p>Flutter, Kotlin, iOS expert</p></div>
+    <div class="team-card"><img src="ph2.jpg" class="team-img"><h3>Priya Srinivasan</h3><div class="team-role">Senior App Developer</div><p>React Native & Android specialist</p></div>
+    <div class="team-card"><img src="ph3.jpg" class="team-img"><h3>Rahul Menon</h3><div class="team-role">Tech Lead (Mobile)</div><p>Cross-platform & backend integration</p></div>
+    <div class="team-card"><img src="ph4.jpg" class="team-img"><h3>Divya Rajesh</h3><div class="team-role">Mobile UI/UX Designer</div><p>Designing intuitive app experiences</p></div>
+  </div>
+</section>
+
+<!-- Other IT Services -->
+<div id="services" class="section">
+  <div class="section-title">Our Services</div>
+  <div class="services-grid" data-aos="zoom-in-up">
+    <div class="service-card"><i class="fas fa-paint-brush"></i><h3>UI/UX Design</h3></div>
+    <div class="service-card"><i class="fab fa-html5"></i><h3>Web Development</h3></div>
+    <div class="service-card"><i class="fab fa-android"></i><h3>Mobile App</h3></div>
+    <div class="service-card"><i class="fas fa-shopping-cart"></i><h3>E-commerce</h3></div>
+    <div class="service-card"><i class="fas fa-bullhorn"></i><h3>Digital Marketing</h3></div>
+    <div class="service-card"><i class="fas fa-pencil-ruler"></i><h3>Graphic Design</h3></div>
+    <div class="service-card"><i class="fas fa-database"></i><h3>Software Dev</h3></div>
+    <div class="service-card"><i class="fas fa-wrench"></i><h3>Maintenance</h3></div>
+  </div>
+</div>
+
+<!-- Industries We Serve (general) -->
+<section id="industries" class="section">
+  <div class="section-title">About Us</div>
+  <p>RK Global Solution is a growing IT solutions company focused on delivering
+     innovative digital services for businesses worldwide. We specialize in website 
+     development, mobile app development, branding, UI/UX design, software solutions, 
+     and digital marketing services.</p>
+
+    <p>ur team combines creativity, technology, and strategy to create 
+    customized digital experiences that help businesses achieve long-term success.
+     We are committed to quality, innovation, transparency, and customer satisfaction.</p>
+</section>
+
+<!-- Process -->
+<section id="process" class="section" style="background: var(--gray-light); border-radius: 3rem;">
+  <div class="section-title">Our Process</div>
+  <div class="process-steps"><div class="step"><div class="step-number">1</div><h3>Requirement</h3></div><div class="step"><div class="step-number">2</div><h3>Planning</h3></div><div class="step"><div class="step-number">3</div><h3>Development</h3></div><div class="step"><div class="step-number">4</div><h3>Testing</h3></div><div class="step"><div class="step-number">5</div><h3>Launch</h3></div><div class="step"><div class="step-number">6</div><h3>Support</h3></div></div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="section">
+  <div class="cta-section" data-aos="flip-up"><h2>Ready to Build Your Mobile App?</h2><p>Get a quote or join our app development coaching.</p><a href="#" class="btn-white">Request Free Consultation</a></div>
+</section>
+
+<!-- Footer -->
+<footer class="rk-footer">
+  <div class="footer-container"><div class="footer-grid"><div class="footer-brand"><h3>RK Global Solution</h3><p class="company-description">RK Global Solution is a trusted IT company in Coimbatore delivering web design, web development, mobile app development, UI/UX design, software solutions, and digital marketing services.<br><br><strong>Contact us today to transform your business digitally.</strong></p></div>
+  <div class="footer-contact"><h4>📞 Get in Touch</h4><div class="services-list"><span class="service-tag"><i class="fas fa-laptop-code"></i> Professional IT Services</span><span class="service-tag"><i class="fas fa-code"></i> Web Dev</span><span class="service-tag"><i class="fas fa-mobile-alt"></i> Mobile App</span><span class="service-tag"><i class="fas fa-paint-brush"></i> UI/UX</span><span class="service-tag"><i class="fas fa-chart-line"></i> Digital Marketing</span><span class="service-tag"><i class="fas fa-headset"></i> Technical Support</span></div></div>
+  <div class="footer-info"><h4>📍 Contact Information</h4><div class="info-details"><div class="info-item"><i class="fas fa-map-marker-alt"></i> Coimbatore, Tamil Nadu, India <br> (UK Business Collaboration)</div><div class="info-item"><i class="fas fa-phone-alt"></i> +91 XXXXXXXXXX</div><div class="info-item"><i class="fas fa-envelope"></i> info@rkglobalsolution.com</div><div class="info-item"><i class="fas fa-globe"></i> www.rkglobalsolution.com</div></div></div></div>
+  <div class="footer-bottom"><div class="copyright">© 2026 RK Global Solution — Empowering Digital Transformation.</div><div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div></div></div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href==="") return;
+      const target = document.querySelector(href);
+      if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  if(window.innerWidth <= 920) {
+    document.querySelectorAll('.dropdown').forEach(drop => {
+      const link = drop.querySelector('a');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const menu = drop.querySelector('.dropdown-menu');
+        if(menu.style.display === 'block') menu.style.display = 'none';
+        else menu.style.display = 'block';
+      });
+    });
+  }
+</script>
+</body>
+</html>

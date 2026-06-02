@@ -1,0 +1,638 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>RK Global Solution | Professional Graphic Design Services</title>
+  <!-- Google Fonts & Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #0a2540;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --primary-blue: #0a66c2;
+      --deep-blue: #004182;
+      --soft-blue: #eef5ff;
+      --white: #ffffff;
+      --gray-light: #f8fafc;
+      --gray-border: #e2e8f0;
+      --accent-orange: #f97316;
+      --accent-purple: #8b5cf6;
+      --gradient-creative: linear-gradient(135deg, #0a66c2 0%, #8b5cf6 100%);
+      --gradient-warm: linear-gradient(135deg, #f97316, #f59e0b);
+    }
+
+    /* animations */
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+    @keyframes glowPulse {
+      0% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.3); }
+      70% { box-shadow: 0 0 0 15px rgba(139, 92, 246, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(139, 92, 246, 0); }
+    }
+    @keyframes fadeInScale {
+      0% { opacity: 0; transform: scale(0.95); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px);}
+      to { opacity: 1; transform: translateX(0);}
+    }
+    .animate-float { animation: float 5s ease-in-out infinite; }
+
+    /* Navbar */
+   /* Navbar */
+    nav {
+      background: var(--white);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(2px);
+      border-bottom: 1px solid var(--gray-border);
+    }
+
+    .nav-container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0.9rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .logo h2 {
+      font-size: 1.7rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, var(--primary-blue), var(--deep-blue));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .logo p {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--deep-blue);
+    }
+
+    .logo1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color:#003B71;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+      transition: var(--transition);
+      display: flex;
+      align-items: center;
+      gap:0.5rem;
+    }
+
+    #site-logo {
+      width: 80px;
+      height: 70px;
+    }
+
+    /* drop-down menu */
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      list-style: none;
+    }
+
+    .nav-links li {
+      position: relative;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1e293b;
+      transition: 0.2s;
+      font-size: 1rem;
+      display: inline-block;
+      padding: 0.5rem 0;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary-blue);
+    }
+
+    .dropdown {
+      position: relative;
+    }
+
+    .dropdown-menu {
+      position: absolute;
+      top: 2.5rem;
+      left: -1.2rem;
+      background: var(--white);
+      min-width: 250px;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1);
+      border-radius: 1rem;
+      padding: 0.8rem 0;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-10px);
+      transition: all 0.25s ease;
+      border: 1px solid var(--gray-border);
+      z-index: 100;
+    }
+
+    .dropdown:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(5px);
+    }
+
+    .dropdown-menu li {
+      padding: 0.5rem 1.5rem;
+      list-style: none;
+    }
+
+    .dropdown-menu li a {
+      font-weight: 500;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1e293b;
+    }
+
+    .dropdown-menu li a i {
+      width: 22px;
+      color: var(--primary-blue);
+    }
+
+    .dropdown-menu li a:hover {
+      color: var(--primary-blue);
+      transform: translateX(4px);
+    }
+
+    .btn-outline {
+      border: 1.5px solid var(--primary-blue);
+      padding: 0.5rem 1.2rem;
+      border-radius: 40px;
+      background: transparent;
+      font-weight: 600;
+      transition: 0.2s;
+    }
+
+    .btn-outline:hover {
+      background: var(--primary-blue);
+      color: white !important;
+    }
+
+    /* Hero Section */
+    .hero-image-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+      padding: 3rem 2rem 2rem;
+      text-align: center;
+    }
+    .hero-banner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 2rem;
+      justify-content: center;
+    }
+    .hero-banner-text { flex: 1; text-align: left; }
+    .hero-banner-text h1 { font-size: 3rem; font-weight: 800; background: linear-gradient(135deg, var(--deep-blue), var(--accent-purple)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .hero-banner-img { flex: 1; display: flex; gap: 1rem; justify-content: center; }
+    .hero-banner-img img { width: 45%; max-width: 200px; border-radius: 1.5rem; box-shadow: 0 20px 30px -8px rgba(0,0,0,0.15); transition: transform 0.3s; }
+    @media (max-width: 768px) { .hero-banner-text { text-align: center; } .hero-banner-text h1 { font-size: 2rem; } }
+
+    /* ========== GRAPHIC DESIGN SERVICES PAGE (DEDICATED) ========== */
+    .graphic-master {
+      background: linear-gradient(145deg, #ffffff 0%, #fef7e6 100%);
+      border-radius: 2.5rem;
+      margin: 2rem auto;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .graphic-hero {
+      text-align: center;
+      padding: 1rem 1rem 2rem;
+    }
+    .graphic-hero h2 {
+      font-size: 2.5rem;
+      font-weight: 800;
+      background: var(--gradient-creative);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .graphic-hero p {
+      max-width: 800px;
+      margin: 1rem auto;
+      font-size: 1.05rem;
+      color: #2c3e66;
+    }
+    .creative-badge {
+      background: var(--gradient-warm);
+      color: white;
+      padding: 0.3rem 1.2rem;
+      border-radius: 40px;
+      display: inline-block;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(249,115,22,0.3);
+    }
+
+    /* Main 2-column layout for services */
+    .graphic-services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0;
+    }
+    .graphic-service-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      border: 1px solid var(--gray-border);
+      box-shadow: 0 15px 25px -12px rgba(0,0,0,0.05);
+      position: relative;
+      overflow: hidden;
+    }
+    .graphic-service-card:hover {
+      transform: translateY(-12px);
+      border-color: var(--accent-orange);
+      box-shadow: 0 25px 40px -12px rgba(249,115,22,0.25);
+    }
+    .graphic-service-card h3 {
+      font-size: 1.7rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--deep-blue);
+    }
+    .service-icons-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.8rem;
+    }
+    .service-icons-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 0.95rem;
+      padding: 0.3rem 0;
+    }
+    .service-icons-list li i {
+      width: 28px;
+      color: var(--accent-orange);
+      font-size: 1.1rem;
+    }
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .why-item {
+      background: linear-gradient(120deg, #fff5eb, #ffffff);
+      padding: 0.8rem;
+      border-radius: 1.2rem;
+      text-align: center;
+      font-weight: 600;
+      transition: 0.2s;
+      border: 1px solid #ffe0b5;
+    }
+    .why-item:hover {
+      background: var(--accent-orange);
+      color: white;
+      transform: scale(1.02);
+    }
+    .why-item i { display: block; font-size: 1.4rem; margin-bottom: 0.3rem; }
+
+    /* Portfolio/showcase cards */
+    .portfolio-showcase {
+      margin-top: 3rem;
+      background: linear-gradient(145deg, #f9f9ff, #ffffff);
+      border-radius: 2rem;
+      padding: 2rem;
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+    .portfolio-card {
+      background: white;
+      border-radius: 1.5rem;
+      padding: 1.2rem;
+      text-align: center;
+      border: 1px solid #fde68a;
+      transition: all 0.3s;
+      animation: fadeInScale 0.5s ease-out;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--accent-orange);
+      box-shadow: 0 20px 25px -10px rgba(249,115,22,0.2);
+    }
+    .portfolio-card i { font-size: 2.2rem; color: var(--accent-orange); margin-bottom: 0.5rem; }
+    .stat-banner {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-top: 2rem;
+      background: var(--gradient-creative);
+      border-radius: 2rem;
+      padding: 1.5rem;
+      color: white;
+    }
+    .stat-number-graphic { font-size: 2rem; font-weight: 800; }
+
+    /* Other sections */
+    .section { padding: 5rem 2rem; max-width: 1300px; margin: 0 auto; }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 700;
+      text-align: center;
+      color: var(--deep-blue);
+      margin-bottom: 2rem;
+    }
+    .section-title:after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: var(--gradient-warm);
+      margin: 0.8rem auto 0;
+      border-radius: 4px;
+    }
+    .industries-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 1.2rem; }
+    .industry-card { background: white; border: 1px solid var(--gray-border); padding: 0.8rem; text-align: center; border-radius: 2rem; transition: 0.2s; }
+    .cta-section { background: var(--gradient-creative); color: white; text-align: center; border-radius: 2.5rem; padding: 3rem 2rem; }
+    .btn-white { background: white; color: var(--accent-purple); padding: 0.8rem 2rem; border-radius: 60px; font-weight: 700; display: inline-block; }
+
+    /* Footer */
+    .rk-footer {
+      background: #0a192f;
+      color: #eef2ff;
+      margin-top: 3rem;
+      border-top: 5px solid var(--accent-orange);
+    }
+    .footer-container { max-width: 1300px; margin: 0 auto; padding: 3rem 2rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; }
+    .company-description { color: #cbd5e6; line-height: 1.6; }
+    .services-list { display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem; }
+    .service-tag { background: rgba(255,255,255,0.06); padding: 0.4rem 1rem; border-radius: 40px; font-size: 0.8rem; transition: 0.2s; }
+    .service-tag:hover { background: var(--accent-orange); transform: translateY(-2px); }
+    .info-details { background: rgba(249,115,22,0.1); border-radius: 1.5rem; padding: 1rem; border-left: 4px solid var(--accent-orange); }
+    .info-item { display: flex; gap: 12px; margin-bottom: 0.8rem; align-items: center; }
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem; margin-top: 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; }
+    .social-links a { color: #cbd5e6; margin-left: 1rem; font-size: 1.1rem; transition: 0.2s; }
+    .social-links a:hover { color: var(--accent-orange); }
+
+    @media (max-width: 920px) {
+      .nav-container { flex-direction: column; gap: 1rem; }
+      .dropdown-menu { position: static; display: none; }
+      .dropdown:hover .dropdown-menu { display: block; }
+      .service-icons-list { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-container">
+    <a href="index.html" class="logo1">
+      <img src="logo5.png" alt="your company logo" id="site-logo">RK GLOBAL SOLUTION
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li class="dropdown">
+        <a href="#services">Services <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i></a>
+        <ul class="dropdown-menu">
+          <li><a href="uiux.html"><i class="fas fa-laptop-code"></i> UI/UX Design</a></li>
+          <li><a href="webdevelopment.html"><i class="fas fa-code"></i> Web Development</a></li>
+          <li><a href="mobileapp.html"><i class="fas fa-mobile-alt"></i> Mobile App Development</a></li>
+          <li><a href="ecommerce.html"><i class="fas fa-store"></i> E-commerce Development</a></li>
+          <li><a href="digital.html"><i class="fas fa-chart-line"></i> Digital Marketing</a></li>
+          <li><a href="graphic.html"><i class="fas fa-palette"></i> Graphic Design</a></li>
+          <li><a href="soft.html"><i class="fas fa-cogs"></i> Software Development</a></li>
+          <li><a href="maintain.html"><i class="fas fa-sync-alt"></i> Website Maintenance</a></li>
+        </ul>
+      </li>
+      <li><a href="#industries">About Us</a></li>
+      <li><a href="#process">Process</a></li>
+      <li><a href="#contact" class="btn-outline">Get in Touch</a></li>
+    </ul>
+  </div>
+</nav>
+
+
+<!-- Hero Section -->
+<section id="home" class="hero-image-section">
+  <div class="hero-banner">
+    <div class="hero-banner-text" data-aos="fade-right">
+      <h1>Design That Speaks,<br>Brand That Shines</h1>
+      <p>Professional graphic design services for digital & print — logos, social creatives, brochures, and complete branding solutions.</p>
+      <a href="#graphic-page" style="background: linear-gradient(135deg, #f97316, #f59e0b); color:white; padding:0.8rem 2rem; border-radius:40px; text-decoration:none; display:inline-block;">Explore Designs</a>
+    </div>
+    <div class="hero-banner-img" data-aos="fade-left">
+      <img src="https://placehold.co/400x350/f97316/white?text=Logo+Design" alt="Logo Design">
+      <img src="https://placehold.co/400x350/8b5cf6/white?text=Branding+Suite" alt="Branding">
+    </div>
+  </div>
+</section>
+
+<!-- ========== GRAPHIC DESIGN SERVICES PAGE (COMPLETE) ========== -->
+<section id="graphic-page" class="section graphic-master" data-aos="fade-up">
+  <div class="graphic-hero">
+    <span class="creative-badge"><i class="fas fa-magic"></i> Creative Studio</span>
+    <h2>Creative Graphic Design Services</h2>
+    <p>RK Global Solution provides professional graphic design services that help businesses build strong brand identity. Our creative team designs attractive visuals for digital and print marketing.</p>
+  </div>
+
+  <div class="graphic-services-grid">
+    <!-- Left: Our Graphic Design Services -->
+    <div class="graphic-service-card" data-aos="fade-right" data-aos-delay="100">
+      <h3><i class="fas fa-brush" style="color: #f97316;"></i> Our Graphic Design Services</h3>
+      <ul class="service-icons-list">
+        <li><i class="fas fa-trademark"></i> Logo Design</li>
+        <li><i class="fas fa-id-card"></i> Business Card Design</li>
+        <li><i class="fas fa-book"></i> Brochure Design</li>
+        <li><i class="fas fa-paper-plane"></i> Flyer Design</li>
+        <li><i class="fab fa-instagram"></i> Social Media Creatives</li>
+        <li><i class="fas fa-flag"></i> Banner Design</li>
+        <li><i class="fas fa-box"></i> Packaging Design</li>
+        <li><i class="fas fa-building"></i> Corporate Branding</li>
+      </ul>
+    </div>
+
+    <!-- Right: Why Choose Our Graphic Design? -->
+    <div class="graphic-service-card" data-aos="fade-left" data-aos-delay="200">
+      <h3><i class="fas fa-star" style="color: #f59e0b;"></i> Why Choose Our Graphic Design?</h3>
+      <div class="why-grid">
+        <div class="why-item"><i class="fas fa-lightbulb"></i> Creative Concepts</div>
+        <div class="why-item"><i class="fas fa-building"></i> Professional Branding</div>
+        <div class="why-item"><i class="fas fa-gem"></i> High-Quality Designs</div>
+        <div class="why-item"><i class="fas fa-tachometer-alt"></i> Fast Delivery</div>
+        <div class="why-item"><i class="fas fa-user-edit"></i> Custom Design Solutions</div>
+        <div class="why-item"><i class="fas fa-headset"></i> Dedicated Support</div>
+      </div>
+      <div style="margin-top: 1.5rem; text-align: center;">
+        <img src="https://placehold.co/400x140/ffffff/f97316?text=Creative+Process+%7C+100%25+Original" style="width:100%; border-radius: 1.2rem;" alt="design process">
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio / Services Showcase with animation -->
+  <div class="portfolio-showcase" data-aos="zoom-in-up">
+    <h3 style="text-align: center; color: var(--deep-blue); margin-bottom: 1rem;"><i class="fas fa-images"></i> What We Create – Design Portfolio</h3>
+    <div class="portfolio-grid">
+      <div class="portfolio-card"><i class="fas fa-trademark"></i><h4>Logo Identity</h4><p>Unique brand marks</p></div>
+      <div class="portfolio-card"><i class="fas fa-newspaper"></i><h4>Print Materials</h4><p>Brochures, flyers</p></div>
+      <div class="portfolio-card"><i class="fab fa-facebook"></i><h4>Social Media Kit</h4><p>Posts & stories</p></div>
+      <div class="portfolio-card"><i class="fas fa-pallet"></i><h4>Packaging</h4><p>Product boxes</p></div>
+      <div class="portfolio-card"><i class="fas fa-chalkboard"></i><h4>Billboards</h4><p>Large format</p></div>
+      <div class="portfolio-card"><i class="fas fa-mobile-alt"></i><h4>Web Graphics</h4><p>UI elements</p></div>
+    </div>
+  </div>
+
+  <!-- Stats banner with animation -->
+  <div class="stat-banner" data-aos="flip-up">
+    <div class="stat-block"><div class="stat-number-graphic">500+</div><div>Design Projects</div></div>
+    <div class="stat-block"><div class="stat-number-graphic">98%</div><div>Client Satisfaction</div></div>
+    <div class="stat-block"><div class="stat-number-graphic">24h</div><div>Quick Turnaround</div></div>
+    <div class="stat-block"><div class="stat-number-graphic">100%</div><div>Original Concepts</div></div>
+  </div>
+</section>
+
+<!-- Additional Services row (Digital Marketing & Web) -->
+<div id="services" class="section">
+  <div class="section-title">Our Complete Creative & Tech Services</div>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap: 1.5rem;">
+    <div class="portfolio-card" style="background: white;"><i class="fas fa-palette"></i><h3>Graphic Design</h3></div>
+    <div class="portfolio-card" style="background: white;"><i class="fas fa-chart-line"></i><h3>Digital Marketing</h3></div>
+    <div class="portfolio-card" style="background: white;"><i class="fas fa-code"></i><h3>Web Development</h3></div>
+    <div class="portfolio-card" style="background: white;"><i class="fas fa-mobile-alt"></i><h3>Mobile Apps</h3></div>
+    <div class="portfolio-card" style="background: white;"><i class="fas fa-shopping-cart"></i><h3>E-Commerce</h3></div>
+  </div>
+</div>
+
+<!-- About Section -->
+<section id="about" class="section">
+  <div class="section-title">Who We Are</div>
+  <div style="display: flex; flex-wrap: wrap; gap: 2rem; align-items: center;">
+    <div style="flex:1"><p style="font-size:1.05rem">RK Global Solution is a leading creative & IT company based in Coimbatore. Our graphic design team blends artistic vision with marketing strategy to deliver stunning visuals that elevate brands. We've helped 500+ businesses with logos, branding, and creative assets.</p></div>
+    <div style="flex:1"><img src="https://placehold.co/500x350/8b5cf6/white?text=Creative+Design+Studio" style="width:100%; border-radius: 2rem;" alt="design studio"></div>
+  </div>
+</section>
+
+<!-- Industries -->
+<section id="industries" class="section">
+  <div class="section-title">About Us</div>
+  <p>RK Global Solution is a growing IT solutions company focused on delivering
+     innovative digital services for businesses worldwide. We specialize in website 
+     development, mobile app development, branding, UI/UX design, software solutions, 
+     and digital marketing services.</p>
+
+    <p>ur team combines creativity, technology, and strategy to create 
+    customized digital experiences that help businesses achieve long-term success.
+     We are committed to quality, innovation, transparency, and customer satisfaction.</p>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="section">
+  <div class="cta-section" data-aos="flip-up">
+    <h2>Let's Create Something Beautiful Together</h2>
+    <p>Get a free quote for logo design, branding, or any creative project.</p>
+    <a href="#" class="btn-white">Request Custom Design →</a>
+  </div>
+</section>
+
+<!-- FOOTER (elaborated) -->
+<footer class="rk-footer">
+  <div class="footer-container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>RK Global Solution</h3>
+        <p class="company-description">RK Global Solution is a trusted IT & creative design company in Coimbatore delivering graphic design, digital marketing, web & mobile development, UI/UX, and e-commerce solutions.<br><br><strong style="color:white;">Contact us today to transform your brand visually.</strong></p>
+      </div>
+      <div>
+        <h4 style="color:white; margin-bottom: 1rem;">🎨 Creative Services</h4>
+        <div class="services-list">
+          <span class="service-tag">Logo Design</span><span class="service-tag">Brand Identity</span>
+          <span class="service-tag">Social Media Graphics</span><span class="service-tag">Brochure/Flyer</span>
+          <span class="service-tag">Packaging Design</span><span class="service-tag">Banner Ads</span>
+        </div>
+      </div>
+      <div class="footer-info">
+        <h4 style="color:white;">📍 Contact Information</h4>
+        <div class="info-details">
+          <div class="info-item"><i class="fas fa-map-marker-alt"></i> Coimbatore, Tamil Nadu, India (UK Collaboration)</div>
+          <div class="info-item"><i class="fas fa-phone-alt"></i> +91 XXXXXXXXXX</div>
+          <div class="info-item"><i class="fas fa-envelope"></i> info@rkglobalsolution.com</div>
+          <div class="info-item"><i class="fas fa-globe"></i> www.rkglobalsolution.com</div>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="copyright">© 2026 RK Global Solution — Creative & IT Powerhouse. All rights reserved.</div>
+      <div class="social-links"><a href="#"><i class="fab fa-linkedin-in"></i></a><a href="#"><i class="fab fa-behance"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-dribbble"></i></a></div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({ duration: 800, once: true, offset: 50 });
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if(href === "#" || href==="") return;
+      const target = document.querySelector(href);
+      if(target) { e.preventDefault(); target.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+  if(window.innerWidth <= 920) {
+    document.querySelectorAll('.dropdown').forEach(drop => {
+      const link = drop.querySelector('a');
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const menu = drop.querySelector('.dropdown-menu');
+        if(menu.style.display === 'block') menu.style.display = 'none';
+        else menu.style.display = 'block';
+      });
+    });
+  }
+</script>
+</body>
+</html>
